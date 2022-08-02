@@ -26,3 +26,16 @@ if (fullPrice >= 30000) {
 } else if (fullPrice < 0) {
     console.log('Что то пошло не так');
 }
+
+console.log(typeof title);
+console.log(typeof fullPrice);
+console.log(typeof adaptive);
+
+console.log(screens.length);
+
+console.log(screenPrice);
+console.log(fullPrice);
+
+console.log(screens.toLowerCase, screens.split());
+
+console.log(fullPrice * (rollback / 100));
