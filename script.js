@@ -12,25 +12,34 @@ let service2 = prompt('Какой дополнительный тип услуг
 let servicePrice2 = +prompt('Сколько это будет стоить?');
 let rollback = 2;
 let fullPrice = screenPrice + servicePrice1 + servicePrice2;
-console.log(fullPrice);
-let percentIntermediary = fullPrice * (rollback / 100);
-let servicePercentPrice = fullPrice - percentIntermediary;
-console.log(Math.ceil(servicePercentPrice));
+let servicePercentPrice = fullPrice - fullPrice * (rollback / 100);
 
-if (fullPrice >= 30000) {
-    console.log('Даем скидку в 10%');
-} else if (fullPrice >= 15000 && fullPrice < 30000) {
-    console.log('Даем скидку в 5%');
-} else if (fullPrice < 15000 && fullPrice >= 0) {
-    console.log('Скидка не предусмотрена');
-} else if (fullPrice < 0) {
-    console.log('Что то пошло не так');
-}
+const showTypeOf = function (variable) {
+    console.log(variable, typeof variable);
+};
 
+const getRollbackMessage = function (price) {
+    if (price >= 30000) {
+        return 'Даем скидку в 10%';
+    } else if (price >= 15000 && price < 30000) {
+        return 'Даем скидку в 5%';
+    } else if (price >= 0 && price < 15000) {
+        return 'Скидка не предусмотрена';
+    } else {
+        return 'Что то пошло не так';
+    }
+};
+
+showTypeOf(title);
+showTypeOf(fullPrice);
+showTypeOf(adaptive);
+
+console.log(getRollbackMessage(fullPrice));
 console.log(typeof title);
 console.log(typeof fullPrice);
 console.log(typeof adaptive);
 
+console.log(Math.ceil(servicePercentPrice));
 console.log(screens.length);
 
 console.log(screenPrice);
