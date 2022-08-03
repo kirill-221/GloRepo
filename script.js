@@ -13,6 +13,24 @@ let servicePrice2 = +prompt('Сколько это будет стоить?');
 let rollback = 2;
 let fullPrice = screenPrice + servicePrice1 + servicePrice2;
 let servicePercentPrice = fullPrice - fullPrice * (rollback / 100);
+let allServicePrices = servicePrice1 + servicePrice2;
+
+const getAllServicePrices = function (allServicePrices) {
+    return allServicePrices;
+};
+
+function getFullPrice() {
+    const fullPrice = screenPrice + allServicePrices;
+    return fullPrice;
+}
+
+const getTitle = function (title) {
+    return title.charAt(0).toUpperCase() + title.slice(1).toLowerCase();
+};
+
+const getServicePercentPrices = function (servicePercentPrice) {
+    return servicePercentPrice;
+};
 
 const showTypeOf = function (variable) {
     console.log(variable, typeof variable);
@@ -34,17 +52,11 @@ showTypeOf(title);
 showTypeOf(fullPrice);
 showTypeOf(adaptive);
 
+console.log(getAllServicePrices(allServicePrices));
+console.log(getFullPrice());
+console.log(getTitle(title.trimStart()));
+console.log(getServicePercentPrices(Math.ceil(servicePercentPrice)));
+
 console.log(getRollbackMessage(fullPrice));
-console.log(typeof title);
-console.log(typeof fullPrice);
-console.log(typeof adaptive);
 
-console.log(Math.ceil(servicePercentPrice));
-console.log(screens.length);
-
-console.log(screenPrice);
-console.log(fullPrice);
-
-console.log(screens.toLowerCase().split(', '));
-
-console.log(fullPrice * (rollback / 100));
+console.log(screens);
