@@ -36,6 +36,6 @@ console.log(screens.length);
 console.log(screenPrice);
 console.log(fullPrice);
 
-console.log(screens.toLowerCase, screens.split());
+console.log(screens.toLowerCase().split(', '));
 
 console.log(fullPrice * (rollback / 100));
