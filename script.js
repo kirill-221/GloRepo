@@ -21,11 +21,11 @@ const asking = function () {
         'Какие типы экранов нужно разработать?',
         'Простые, Сложные, Интерактивные'
     );
-
+    // screenPrice = +prompt('Сколько будет стоить данная работа?', '10000');
     do {
-        screenPrice = +prompt('Сколько будет стоить данная работа?', '10000');
+        screenPrice = prompt('Сколько будет стоить данная работа?', '10000');
     } while (!isNumber(screenPrice));
-    adaptive = prompt('Нужен ли адаптив на сайте?', 'true / false');
+    adaptive = confirm('Нужен ли адаптив на сайте?', 'true / false');
 };
 
 const getAllServicePrices = function () {
@@ -40,7 +40,7 @@ const getAllServicePrices = function () {
         sum += +prompt('Сколько это будет стоить?');
 
         while (!isNumber(sum)) {
-            sum += +prompt('Сколько это будет стоить?');
+            sum = +prompt('Сколько это будет стоить?');
         }
     }
     return sum;
