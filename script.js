@@ -52,7 +52,7 @@ const showTypeOf = function (variable) {
 };
 
 function getFullPrice() {
-    return screenPrice + allServicePrices;
+    return screenPrice - -allServicePrices;
 }
 
 const getServicePercentPrices = function () {
