@@ -31,17 +31,20 @@ const asking = function () {
 const getAllServicePrices = function () {
     let sum = 0;
     for (let i = 0; i < 2; i++) {
+        let price = 0;
         if (i === 0) {
             service1 = prompt('Какой дополнительный тип услуги нужен?');
         } else if (i === 1) {
             service2 = prompt('Какой дополнительный тип услуги нужен?');
         }
 
-        sum += +prompt('Сколько это будет стоить?');
+        // sum += +prompt('Сколько это будет стоить?');
 
-        while (!isNumber(sum)) {
-            sum = +prompt('Сколько это будет стоить?');
-        }
+        do {
+            price = prompt('Сколько это будет стоить?');
+        } while (!isNumber(price));
+
+        sum += +price;
     }
     return sum;
     // return servicePrice1 + servicePrice2;
@@ -52,7 +55,7 @@ const showTypeOf = function (variable) {
 };
 
 function getFullPrice() {
-    return screenPrice - -allServicePrices;
+    return +screenPrice + allServicePrices;
 }
 
 const getServicePercentPrices = function () {
