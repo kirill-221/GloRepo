@@ -11,29 +11,49 @@ const appData = {
     servicePercentPrice: 0,
     services: {},
     asking: function () {
-        appData.title = prompt(
-            'Как называется ваш проект?',
-            'Калькулятор верстки'
-        );
+        do {
+            appData.title = prompt(
+                'Как называется ваш проект?',
+                'Калькулятор верстки'
+            );
+        } while (appData.isNumber(String(appData.title)));
+        console.log(appData.title, typeof appData.title);
 
         for (let i = 0; i < 2; i++) {
-            let name = prompt('Какие типы экранов нужно разработать?');
+            let name;
             let price = 0;
 
             do {
-                price = prompt('Сколько будет стоить данная работа?', '10000');
-            } while (!appData.isNumber(price));
+                name = prompt('Какие типы экранов нужно разработать?');
+            } while (appData.isNumber(String(name)));
+            console.log(name, typeof name);
 
-            appData.screens.push({ id: i, name: name, price: price });
+            do {
+                price = +prompt('Сколько будет стоить данная работа?', '10000');
+            } while (!appData.isNumber(price));
+            console.log(price, typeof price);
+
+            appData.screens.push({
+                id: i,
+                name: name,
+                price: price,
+            });
         }
 
         for (let i = 0; i < 2; i++) {
-            let name = prompt('Какой дополнительный тип услуги нужен?');
+            let name;
             let price = 0;
 
             do {
-                price = prompt('Сколько это будет стоить?');
+                name = prompt('Какой дополнительный тип услуги нужен?');
+            } while (appData.isNumber(String(name)));
+            console.log(name, typeof name);
+
+            do {
+                price = +prompt('Сколько это будет стоить?');
             } while (!appData.isNumber(price));
+
+            console.log(price, typeof price);
 
             appData.services[name] = +price;
         }
@@ -74,9 +94,6 @@ const appData = {
         } else {
             return 'Что то пошло не так';
         }
-    },
-    isString: function (x) {
-        return Object.prototype.toString.call(x) === '[object String]';
     },
     start: function () {
         appData.asking();
