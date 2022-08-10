@@ -1,5 +1,20 @@
 'use strict';
 
+const title = document.getElementsByTagName('h1')[0];
+const calculateBtn = document.getElementsByClassName('handler_btn');
+const resetBtn = document.getElementsByClassName('handler_btn');
+const screenBtn = document.querySelector('.screen-btn');
+const itemsPersent = document.querySelectorAll('.percent');
+const itemsNumber = document.querySelectorAll('.number ');
+const input = document.querySelector('.rollback input');
+const spanText = document.querySelector('.rollback .range-value');
+const totalInput = document.getElementsByClassName('total-input')[0];
+const totalInput1 = document.getElementsByClassName('total-input')[1];
+const totalInput2 = document.getElementsByClassName('total-input')[2];
+const totalInput3 = document.getElementsByClassName('total-input')[3];
+const totalInput4 = document.getElementsByClassName('total-input')[4];
+let screenBlock = document.querySelectorAll('.screen');
+
 const appData = {
     title: '',
     screens: [],
@@ -50,7 +65,7 @@ const appData = {
             console.log(name, typeof name);
 
             do {
-                price = +prompt('Сколько это будет стоить?');
+                price = prompt('Сколько это будет стоить?');
             } while (!appData.isNumber(price));
 
             console.log(price, typeof price);
