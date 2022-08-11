@@ -10,6 +10,8 @@ console.log(ulHtml);
 
 const elemLi = document.querySelectorAll('li');
 
+console.log(elemLi);
+
 body.style.backgroundImage = 'url(./image/you-dont-know-js.jpg)';
 maitTitle.textContent = 'Книга 3. this и Прототипы Объектов';
 
@@ -34,3 +36,5 @@ elemLi[53].after(elemLi[51]);
 //Добавление главы в книгу 6
 newElem.textContent = 'Глава 8: За пределами ES6';
 ulHtml[2].append(newElem);
+
+newElem.after(elemLi[26]);
