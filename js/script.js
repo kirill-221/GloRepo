@@ -1,8 +1,8 @@
 'use strict';
 
 const title = document.getElementsByTagName('h1')[0];
-const calculateBtn = document.getElementsByClassName('handler_btn');
-const resetBtn = document.getElementsByClassName('handler_btn');
+const calculateBtn = document.getElementsByClassName('handler_btn')[0];
+const resetBtn = document.getElementsByClassName('handler_btn')[1];
 const screenBtn = document.querySelector('.screen-btn');
 const itemsPersent = document.querySelectorAll('.percent');
 const itemsNumber = document.querySelectorAll('.number ');
