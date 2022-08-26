@@ -8,12 +8,12 @@ const itemsPersent = document.querySelectorAll('.other-items.percent');
 const itemsNumber = document.querySelectorAll('.other-items.number ');
 const input = document.querySelector('.rollback input');
 const spanText = document.querySelector('.rollback .range-value');
-const total = document.getElementsByClassName('total-input')[0];
+let total = document.getElementsByClassName('total-input')[0];
 let totalCount = document.getElementsByClassName('total-input')[1];
-const totalCountOther = document.getElementsByClassName('total-input')[2];
-const fullTotalCount = document.getElementsByClassName('total-input')[3];
-const totalCountRollback = document.getElementsByClassName('total-input')[4];
-const rollbackInput = document.querySelector('.main-controls__range input');
+let totalCountOther = document.getElementsByClassName('total-input')[2];
+let fullTotalCount = document.getElementsByClassName('total-input')[3];
+let totalCountRollback = document.getElementsByClassName('total-input')[4];
+let rollbackInput = document.querySelector('.main-controls__range input');
 
 let numberOfScreens = document.querySelector('.main-controls__input input');
 const checkboxCms = document.getElementById('cms-open');
@@ -48,6 +48,7 @@ const appData = {
         resetBtn.addEventListener('click', this.reset.bind(appData));
     },
     reset: function () {
+        console.log(appData);
         this.screens = document.querySelectorAll('.screen');
         this.screens.forEach((item) => {
             const select = item.querySelector('select');
@@ -57,13 +58,6 @@ const appData = {
             select.disabled = false;
             input.disabled = false;
         });
-
-        this.screenPrice = 0;
-        this.rollback = 0;
-        this.servicePricesPercent = 0;
-        this.servicePriceNumber = 0;
-        this.fullPrice = 0;
-        this.servicePercentPrice = 0;
 
         for (let i = 0; i < this.screens.length - 1; i++) {
             this.screens[i].remove();
@@ -93,6 +87,17 @@ const appData = {
         // for (let select of allSelect) {
         //     select.value = select.options[0].value;
         // }
+        // checkboxCms.checked = false;
+        this.servicesPersent = {};
+        this.servicesNumber = {};
+        this.screenPrice = 0;
+        this.ServicePricesNumber = 0;
+        this.rollback = 0;
+        this.servicePricesPercent = 0;
+        this.servicePriceNumber = 0;
+        this.fullPrice = 0;
+        this.servicePercentPrice = 0;
+
         checkboxCms.checked = false;
         checkboxCms.disabled = false;
 
@@ -143,7 +148,6 @@ const appData = {
         });
 
         checkboxCms.disabled = true;
-        checkboxCms.checked = true;
 
         buttonPlus.disabled = true;
         rollbackInput.disabled = true;
