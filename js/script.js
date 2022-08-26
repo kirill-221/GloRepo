@@ -16,6 +16,7 @@ const totalCountRollback = document.getElementsByClassName('total-input')[4];
 const rollbackInput = document.querySelector('.main-controls__range input');
 
 let numberOfScreens = document.querySelector('.main-controls__input input');
+const checkboxCms = document.getElementById('cms-open');
 
 let rollbackSpanPersent = document.querySelector('.range-value');
 let screenBlock = document.querySelectorAll('.screen');
@@ -35,10 +36,8 @@ const appData = {
     init: function () {
         this.addTitle();
 
-        calculateBtn.addEventListener('click', () => {
-            let start = this.start.bind(appData);
-            start();
-        });
+        calculateBtn.addEventListener('click', this.start.bind(appData));
+
         buttonPlus.addEventListener('click', () => {
             this.addScreenBlock();
         });
@@ -46,10 +45,7 @@ const appData = {
             let changeParams = this.changeParams.bind(appData, event);
             changeParams();
         });
-        resetBtn.addEventListener('click', () => {
-            let reset = this.reset.bind(appData);
-            reset();
-        });
+        resetBtn.addEventListener('click', this.reset.bind(appData));
     },
     reset: function () {
         this.screens = document.querySelectorAll('.screen');
@@ -60,11 +56,19 @@ const appData = {
             input.value = '';
             select.disabled = false;
             input.disabled = false;
-
-            for (let i = 0; i < this.screens.length - 1; i++) {
-                this.screens[i].remove();
-            }
         });
+
+        this.screenPrice = 0;
+        this.rollback = 0;
+        this.servicePricesPercent = 0;
+        this.servicePriceNumber = 0;
+        this.fullPrice = 0;
+        this.servicePercentPrice = 0;
+
+        for (let i = 0; i < this.screens.length - 1; i++) {
+            this.screens[i].remove();
+        }
+        this.screens = [];
 
         itemsPersent.forEach((item) => {
             const check = item.querySelector('input[type=checkbox]');
@@ -89,6 +93,8 @@ const appData = {
         // for (let select of allSelect) {
         //     select.value = select.options[0].value;
         // }
+        checkboxCms.checked = false;
+        checkboxCms.disabled = false;
 
         buttonPlus.disabled = false;
         rollbackInput.disabled = false;
@@ -125,6 +131,22 @@ const appData = {
             select.disabled = true;
             input.disabled = true;
         });
+
+        itemsPersent.forEach((item) => {
+            const check = item.querySelector('input[type=checkbox]');
+            check.disabled = true;
+        });
+
+        itemsNumber.forEach((item) => {
+            const check = item.querySelector('input[type=checkbox]');
+            check.disabled = true;
+        });
+
+        checkboxCms.disabled = true;
+        checkboxCms.checked = true;
+
+        buttonPlus.disabled = true;
+        rollbackInput.disabled = true;
         calculateBtn.style.display = 'none';
         resetBtn.style.display = 'block';
     },
@@ -166,9 +188,10 @@ const appData = {
         screenBlock.forEach((screen, index) => {
             const select = screen.querySelector('select');
             const input = screen.querySelector('input');
+
             const selectName =
                 select.options[select.selectedIndex].textContent.trim();
-            let numberScreens = numberOfScreens.value;
+            let numberScreens = input.value;
             this.screens.push({
                 id: index,
                 name: selectName,
